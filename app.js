@@ -17,6 +17,14 @@ const config = require('dotenv').config()
 const fs = require('fs');
 const path = require('path');
 const download = require('download');
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => res.send('Hello World!'));
+
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
+//const mySecret = process.env['LOGIN_TOKEN']
 
 client.on('ready', () =>{
     console.log(`logged in as ${client.user.tag}!`)
@@ -32,7 +40,6 @@ client.on('messageCreate', async (message) => {
         message.guild.members.fetch().then(members =>{
             members.forEach(member => {
             if (member.id != client.user.id && !member.user.bot && !member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || !member.permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES)){
-                console.log(member);
                 member.send(text);
                 }
             });
