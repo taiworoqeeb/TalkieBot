@@ -13,7 +13,7 @@ const client = new Discord.Client({ intents: new Discord.Intents([Discord.Intent
                                                                     Discord.Intents.FLAGS.GUILD_MESSAGE_TYPING,
                                                                     Discord.Intents.FLAGS.GUILD_SCHEDULED_EVENTS,
                                                                     Discord.Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS]) });
-require('dotenv').config()
+const config = require('dotenv').config()
 const fs = require('fs');
 const path = require('path');
 const download = require('download');
