@@ -18,6 +18,8 @@ const fs = require('fs');
 const path = require('path');
 const download = require('download');
 
+
+
 client.on('ready', (req, res) =>{
     const express = require('express');
     const app = express();
@@ -28,6 +30,14 @@ client.on('ready', (req, res) =>{
     
     
 });
+
+function delay(milliseconds) {
+    const date = Date.now();
+    const currentDate = null;
+    do{
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+};
 
 client.on('messageCreate', async (message) => {
 
@@ -61,6 +71,25 @@ client.on('messageCreate', async (message) => {
         }
     }
 
+ if (message.guild && message.content.startsWith('/setDMD')) {
+        if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
+            return message.reply('You not permitted to use this command')
+        } else{
+        let text = message.content.slice('/setDMD'.length);
+        //message.delete();
+        message.guild.members.fetch().then(members =>{
+            members.forEach(member => {
+              const admin = member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR);
+              const mod = member.permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES);
+            if (member.id != client.user.id && !member.user.bot && !admin || !mod){
+                member.send(text);
+                delay(10000)
+                }
+            });
+            });
+        
+        }
+    }
 
     if(message.content.startsWith('/setAvatar')){
         if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
