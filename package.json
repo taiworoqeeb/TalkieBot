@@ -1,13 +1,13 @@
 {
-  "name": "clientbot",
-  "version": "1.0.0",
-  "description": "",
+  "name": "Talkiebot",
+  "version": "1.1.1",
+  "description": "Discord Talking Bot for sending DM, made by CodingMage",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
-  "author": "",
+  "author": "Raqeeb Olatunbosun Taiwo a.k.a CodingMage",
   "license": "ISC",
   "dependencies": {
     "del": "^6.0.0",

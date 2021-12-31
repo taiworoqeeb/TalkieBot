@@ -17,20 +17,31 @@ const config = require('dotenv').config()
 const fs = require('fs');
 const path = require('path');
 const download = require('download');
-const express = require('express');
-const app = express();
-const port = 3000;
 
-app.get('/', (req, res) => res.send('Hello World!'));
-
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
-//const mySecret = process.env['LOGIN_TOKEN']
-
-client.on('ready', () =>{
+client.on('ready', (req, res) =>{
+    const express = require('express');
+    const app = express();
+    const port = 5000;
+    app.get('/', (req, res) => res.send(`Welcome to ${client.user.tag} domain !`));
+    app.listen(port, () => console.log(`${client.user.tag} listening at http://localhost:${port}`)); 
     console.log(`logged in as ${client.user.tag}!`)
+    
+    
 });
 
 client.on('messageCreate', async (message) => {
+
+  const Greetings = message.content.split(' ');
+    if(Greetings[0] === '/TalkieBot') {
+        const command = Greetings[1]
+        if(!command) {
+            return
+        }
+        if(command.toLowerCase() === 'hello'){
+            await message.reply("Hello there!😊");
+        }
+    }
+
     if (message.guild && message.content.startsWith('/setDM')) {
         if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
             return message.reply('You not permitted to use this command')
@@ -39,7 +50,9 @@ client.on('messageCreate', async (message) => {
         message.delete();
         message.guild.members.fetch().then(members =>{
             members.forEach(member => {
-            if (member.id != client.user.id && !member.user.bot && !member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || !member.permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES)){
+              const admin = member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR);
+              const mod = member.permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES);
+            if (member.id != client.user.id && !member.user.bot && !admin || !mod){
                 member.send(text);
                 }
             });
@@ -47,6 +60,7 @@ client.on('messageCreate', async (message) => {
         
         }
     }
+
 
     if(message.content.startsWith('/setAvatar')){
         if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
@@ -71,29 +85,25 @@ client.on('messageCreate', async (message) => {
                        (err) => {
                            if(err){
                            console.log(err);
-                           }
+                          }
                        }
-                       )};
-               };
-              
-        
-            
+                    )};
+               };   
             })();
-
             const image = path.resolve(__dirname, './uploads');
             client.user.setAvatar(fs.readFileSync(image + '/avatar.jpg'));
-            message.author.send("New Avatar set, wait a few minutes for changes");   
+            message.author.send("New Bot's Avatar set, wait a few minutes for changes");   
         };
 
     };
 
-    if(message.guild && message.content.startsWith('/setName')){
+    if(message.guild && message.content.startsWith('/BotName')){
         if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
             return message.reply('You not permitted to use this command');
         } else{
-            let name = message.content.slice('/setName'.length);
+            let botname = message.content.slice('/BotName'.length);
             message.delete();
-            client.user.setUsername(name);
+            client.user.setUsername(botname);
             message.author.send('Bot username changed! NOTE: username can\'t be changed multiple times at the same time ')
                 }
             }
