@@ -33,7 +33,7 @@ client.on('ready', (req, res) =>{
 
 function delay(milliseconds) {
     const date = Date.now();
-    const currentDate = null;
+    let currentDate = null;
     do{
       currentDate = Date.now();
     } while (currentDate - date < milliseconds);
