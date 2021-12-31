@@ -17,7 +17,6 @@ require('dotenv').config()
 const fs = require('fs');
 const path = require('path');
 const download = require('download');
-const del = require('del');
 
 client.on('ready', () =>{
     console.log(`logged in as ${client.user.tag}!`)
