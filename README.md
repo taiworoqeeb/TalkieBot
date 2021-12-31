@@ -2,7 +2,7 @@
 
 # Discord bot.
 
- /sdm <message> : to send direct message to the users in a server
+ /setDM <message> : to send direct message to the users in a server
 
  /setAvatar <image url> : to change bot Avatar image. note this may take a few minute to reflect. do not send it multiple times
     
