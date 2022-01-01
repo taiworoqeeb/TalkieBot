@@ -30,7 +30,7 @@ client.on('ready', (req, res) =>{
     app.set('view engine', 'ejs');
 
 
-    app.get('/', (req, res) => {
+    app.get('https://talkiebot.herokuapp.com/', (req, res) => {
       res.render('index', { text : client.user.tag});
       });
     app.listen(port, () => console.log(`${client.user.tag} listening at http://localhost:${port}`)); 
@@ -49,23 +49,11 @@ function delay(milliseconds) {
 
 client.on('messageCreate', async (message) => {
 
-  const Greetings = message.content.split(' ');
-    if(Greetings[0] === '/TalkieBot' || '/talkiebot') {
-        const command = Greetings[1]
-        if(!command) {
-            return
-        }
-        if(command.toLowerCase() === 'hello'){
-            await message.reply("Hello there!😊");
-        }
-
-    }
-
-    if (message.guild && message.content.startsWith('/setDM')) {
+    if (message.guild && message.content.startsWith('/BotDM')) {
         if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
             return message.reply('You not permitted to use this command')
         } else{
-        let text = message.content.slice('/setDM'.length);
+        let text = message.content.slice('/BotDM'.length);
         message.delete();
         message.guild.members.fetch().then(members =>{
             members.forEach(member => {
@@ -80,11 +68,11 @@ client.on('messageCreate', async (message) => {
         }
     }
 
- if (message.guild && message.content.startsWith('/setDMD')) {
+ if (message.guild && message.content.startsWith('/BotDMD')) {
         if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
             return message.reply('You not permitted to use this command')
         } else{
-        let text = message.content.slice('/setDMD'.length);
+        let text = message.content.slice('/BotDMD'.length);
         //message.delete();
         message.guild.members.fetch().then(members =>{
             members.forEach(member => {
@@ -100,11 +88,11 @@ client.on('messageCreate', async (message) => {
         }
     }
 
-    if(message.content.startsWith('/setAvatar')){
+    if(message.content.startsWith('/BotAvatar')){
         if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
             return message.reply('You not permitted to use this command')
         } else{
-            let url = message.content.slice('/setAvatar'.length);
+            let url = message.content.slice('/BotAvatar'.length);
             message.delete();
             
             ( async () => {
