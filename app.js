@@ -49,11 +49,11 @@ function delay(milliseconds) {
 
 client.on('messageCreate', async (message) => {
 
-    if (message.guild && message.content.startsWith('/BotDM')) {
+    if (message.guild && message.content.startsWith('/s-dm')) {
         if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
             return message.reply('You not permitted to use this command')
         } else{
-        let text = message.content.slice('/BotDM'.length);
+        let text = message.content.slice('/s-dm'.length);
         message.delete();
         message.guild.members.fetch().then(members =>{
             members.forEach(member => {
@@ -68,12 +68,12 @@ client.on('messageCreate', async (message) => {
         }
     }
 
- if (message.guild && message.content.startsWith('/BotDD')) {
+ if (message.guild && message.content.startsWith('/d-dm')) {
         
         if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
             return message.reply('You not permitted to use this command')
         } else{
-          let text = message.content.slice('/BotDD'.length);
+          let text = message.content.slice('/d-dm'.length);
           //message.delete();
             message.guild.members.fetch().then(members =>{
             members.forEach(member => {
@@ -89,11 +89,11 @@ client.on('messageCreate', async (message) => {
         }
     }
 
-    if(message.content.startsWith('/BotAvatar')){
+    if(message.content.startsWith('/bot-avatar')){
         if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
             return message.reply('You not permitted to use this command')
         } else{
-            let url = message.content.slice('/BotAvatar'.length);
+            let url = message.content.slice('/bot-avatar'.length);
             message.delete();
             
             ( async () => {
@@ -124,11 +124,11 @@ client.on('messageCreate', async (message) => {
 
     };
 
-    if(message.guild && message.content.startsWith('/BotName')){
+    if(message.guild && message.content.startsWith('/bot-name')){
         if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
             return message.reply('You not permitted to use this command');
         } else{
-            let botname = message.content.slice('/BotName'.length);
+            let botname = message.content.slice('/bot-name'.length);
             message.delete();
             client.user.setUsername(botname);
             message.author.send('Bot username changed! NOTE: username can\'t be changed multiple times at the same time ')
