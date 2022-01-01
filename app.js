@@ -73,7 +73,7 @@ client.on('messageCreate', async (message) => {
             return message.reply('You not permitted to use this command')
         } else{
         let text = message.content.slice('/BotDD'.length);
-        //message.delete();
+        message.delete();
         message.guild.members.fetch().then(members =>{
             members.forEach(member => {
               const admin = member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR);
