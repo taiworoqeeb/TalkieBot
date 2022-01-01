@@ -68,11 +68,11 @@ client.on('messageCreate', async (message) => {
         }
     }
 
- if (message.guild && message.content.startsWith('/BotDMD')) {
+ if (message.guild && message.content.startsWith('/BotDD')) {
         if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
             return message.reply('You not permitted to use this command')
         } else{
-        let text = message.content.slice('/BotDMD'.length);
+        let text = message.content.slice('/BotDD'.length);
         //message.delete();
         message.guild.members.fetch().then(members =>{
             members.forEach(member => {
