@@ -50,7 +50,7 @@ function delay(milliseconds) {
 client.on('messageCreate', async (message) => {
 
   const Greetings = message.content.split(' ');
-    if(Greetings[0] && !message.client.user === '/TalkieBot' || '/talkiebot' || '@TalkieBot') {
+    if(Greetings[0] && !message.client.user === '/TalkieBot' || '/talkiebot') {
         const command = Greetings[1]
         if(!command) {
             return
