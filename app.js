@@ -81,7 +81,7 @@ client.on('messageCreate', async (message) => {
               const mod = member.permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES);
             if (member.id != client.user.id && !member.user.bot && !admin || !mod){
                 member.send(text);
-                delay(10000)
+                delay(5000)
                 }
             });
             });
