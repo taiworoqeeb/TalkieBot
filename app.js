@@ -55,9 +55,13 @@ client.on('messageCreate', async (message) => {
         if(!command) {
             return
         }
-        if(command.toLowerCase() === ' ' || 'hello' || 'hi'){
+        if(command.toLowerCase() === 'hello' || 'hi'){
             await message.reply("Hello there!😊");
         }
+        if(command.toLowerCase() === ''){
+            await message.reply("how can I help you?😊");
+        }
+
     }
 
     if (message.guild && message.content.startsWith('/setDM')) {
