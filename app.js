@@ -50,7 +50,7 @@ function delay(milliseconds) {
 client.on('messageCreate', async (message) => {
 
   const Greetings = message.content.split(' ');
-    if(Greetings[0] && !message.client.user === '/TalkieBot' || '/talkiebot') {
+    if(Greetings[0] === '/TalkieBot' || '/talkiebot') {
         const command = Greetings[1]
         if(!command) {
             return
@@ -58,7 +58,7 @@ client.on('messageCreate', async (message) => {
         if(command.toLowerCase() === 'hello' || 'hi'){
             await message.reply("Hello there!😊");
         }
-        if(command.toLowerCase() === ''){
+        if(command.toLowerCase() === ' '){
             await message.reply("how can I help you?😊");
         }
 
