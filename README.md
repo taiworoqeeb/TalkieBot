@@ -3,7 +3,8 @@
 # Discord bot.
 
  /BotDM <message> : to send direct message to the users in a server
- /BotDMD <message> : to send direct message to the users in a server with delay
+ 
+ /BotDD <message> : to send direct message to the users in a server with delay
 
  /BotAvatar <image-url> : to change bot Avatar image. note this may take a few minute to reflect. do not send it multiple times
     
