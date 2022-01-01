@@ -24,7 +24,15 @@ client.on('ready', (req, res) =>{
     const express = require('express');
     const app = express();
     const port = 5000;
-    app.get('/', (req, res) => res.send(`Welcome to ${client.user.tag} domain !`));
+
+    app.use("/public", express.static('public'));
+    app.set('views', './views');
+    app.set('view engine', 'ejs');
+
+
+    app.get('/', (req, res) => {
+      res.render('index', { text : client.user.tag});
+      });
     app.listen(port, () => console.log(`${client.user.tag} listening at http://localhost:${port}`)); 
     console.log(`logged in as ${client.user.tag}!`)
     
