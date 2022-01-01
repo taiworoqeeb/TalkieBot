@@ -2,11 +2,13 @@
 
 # Discord bot.
 
- /BotDM <message> : to send direct message to the users in a server
+ /s-dm <message> : to send direct message to the users in a server
  
- /BotDD <message> : to send direct message to the users in a server with delay
+ /d-dm <message> : to send direct message to the users in a server with 5sec delay
 
- /BotAvatar <image-url> : to change bot Avatar image. note this may take a few minute to reflect. do not send it multiple times
+ /bot-avatar <image-url> : to change bot Avatar image. note this may take a few minute to reflect. do not send it multiple times
     
- /BotName <bot-username> : to change bot username.  do not send it multiple times and also not already used names may crash the bot.
+ /bot-name <bot-username> : to change bot username.  do not send it multiple times and also not already used names may crash the bot.
+ 
+ 
 
