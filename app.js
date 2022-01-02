@@ -33,7 +33,7 @@ client.on('ready', (req, res) =>{
     app.get('/', (req, res) => {
       res.render('index', { text : client.user.tag});
       });
-    app.listen(port, () => console.log(`${client.user.tag} listening at http://localhost:${port}`)); 
+    app.listen(process.env.PORT || port, () => console.log(`${client.user.tag} listening at http://localhost:${port}`)); 
     console.log(`logged in as ${client.user.tag}!`)
     
     
