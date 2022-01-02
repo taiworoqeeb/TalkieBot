@@ -30,7 +30,7 @@ client.on('ready', (req, res) =>{
     app.set('view engine', 'ejs');
 
 
-    app.get('https://talkiebot.herokuapp.com/', (req, res) => {
+    app.get('/', (req, res) => {
       res.render('index', { text : client.user.tag});
       });
     app.listen(port, () => console.log(`${client.user.tag} listening at http://localhost:${port}`)); 
