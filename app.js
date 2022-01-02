@@ -23,7 +23,7 @@ const download = require('download');
 client.on('ready', (req, res) =>{
     const express = require('express');
     const app = express();
-    const port = 5000;
+    const port = 3000;
 
     app.use("/public", express.static('public'));
     app.set('views', './views');
