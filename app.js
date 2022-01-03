@@ -50,9 +50,6 @@ function delay(milliseconds) {
 client.on('messageCreate', async (message) => {
 
     if (message.guild && message.content.startsWith('/s-dm')) {
-        if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
-            return message.reply('You not permitted to use this command')
-        } else{
         let text = message.content.slice('/s-dm'.length);
         message.delete();
         message.guild.members.fetch().then(members =>{
@@ -65,14 +62,10 @@ client.on('messageCreate', async (message) => {
             });
             });
         
-        }
+        
     }
 
  if (message.guild && message.content.startsWith('/d-dm')) {
-        
-        if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
-            return message.reply('You not permitted to use this command')
-        } else{
           let text = message.content.slice('/d-dm'.length);
             message.guild.members.fetch().then(members =>{
             message.delete();
@@ -86,13 +79,10 @@ client.on('messageCreate', async (message) => {
             });
             });
         
-        }
+        
     }
 
     if(message.content.startsWith('/bot-avatar')){
-        if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
-            return message.reply('You not permitted to use this command')
-        } else{
             let url = message.content.slice('/bot-avatar'.length);
             message.delete();
             
@@ -120,20 +110,16 @@ client.on('messageCreate', async (message) => {
             const image = path.resolve(__dirname, './uploads');
             client.user.setAvatar(fs.readFileSync(image + '/avatar.jpg'));
             message.author.send("New Bot's Avatar set, wait a few minutes for changes");   
-        };
 
     };
 
     if(message.guild && message.content.startsWith('/bot-name')){
-        if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
-            return message.reply('You not permitted to use this command');
-        } else{
             let botname = message.content.slice('/bot-name'.length);
             client.user.setUsername(botname);
             message.author.send(`Bot username changed to ${botname} NOTE: username can\'t be changed multiple times at the same time `);
             message.delete();
                 }
-            }
+            
 });
 
 client.login(process.env.LOGIN_TOKEN)
